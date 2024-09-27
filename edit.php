@@ -22,7 +22,7 @@ include "template/user_header.php";
         
         <form class="shadow w-450 p-3" 
               action="php/edit.php" 
-              method="post"
+              method="POST"
               enctype="multipart/form-data">
 
             <h4 class="display-4  fs-1">Edit Profile</h4><br>
@@ -79,10 +79,11 @@ include "template/user_header.php";
                    name="old_pp"
                    value="<?=$user['pp']?>" >
           </div>
-          
-          <button type="submit" class="btn btn-primary">Update</button>
-          <a href="forgot-password.php" class="link-secondary d-flex justify-content-end" style="position:relative; top:-30px;">Change Password</a>
-        </form>
+          <div class="d-flex justify-content-between align-items-center">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="forgot-password.php" class="link-secondary">Change Password</a>
+      </div>
+    </form>
     </div>
     <?php }else{ 
         header("Location: home.php");

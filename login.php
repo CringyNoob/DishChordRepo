@@ -1,49 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<?php	include("template/header.php"); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the login form */
+        .login-form-container {
+            max-width: 500px;
+            background-color: #efefef;
+            padding: 70px;
+            border-radius: 10px;
+        }
 
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <!-- <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-5 text-white mb-3 animated slideInDown">Login</h1>
-                </div> -->
-            </div>
+        .form-title {
+            color: #f47c01;
+        }
 
+        .btn-custom {
+            font-size: 18px;
+            width: 100%;
+        }
 
-    <div class="d-flex justify-content-center align-items-center vh-100" >
-    	
-    	<form class="shadow w-450 p-3" 
-    	      action="php/login.php" 
-    	      method="post" style="width: 500px; height: 600px; max-height:600px; margin-top:-400px; background-color:#efefef;">
+        .forgot-link {
+            font-size: 16px;
+        }
 
-    		<h3 class="display-4" style="color:#f47c01;">LOGIN</h3><br>
-    		<?php if(isset($_GET['error'])){ ?>
-    		<div class="alert alert-danger" role="alert">
-			  <?php echo $_GET['error']; ?>
-			</div>
-		    <?php } ?>
+        .signup-link {
+            font-size: 18px;
+            color: darkslategrey;
+        }
 
-		  <div class="mb-3">
-		    <label class="form-label" style="font-size:25px">User name</label>
-		    <input type="text" 
+        @media (max-width: 576px) {
+            .login-form-container {
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 24px;
+            }
+
+            .btn-custom {
+                font-size: 16px;
+            }
+
+            .forgot-link,
+            .signup-link {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <?php include("template/header.php"); ?>
+
+    <div class="container-xxl py-5 bg-dark hero-header mb-5"></div>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="login-form-container shadow">
+            <h3 class="display-4 form-title text-center mb-4">LOGIN</h3>
+
+            <?php if (isset($_GET['error'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_GET['error']; ?>
+                </div>
+            <?php } ?>
+
+            <form action="php/login.php" method="post">
+
+                <div class="mb-3">
+                    <label for="username" class="form-label" style="font-size: 20px;">User Name</label>
+					<input type="text" 
 		           class="form-control"
 		           name="uname"
-		           value="<?php echo (isset($_GET['uname']))?$_GET['uname']:"" ?>">
-		  </div>
+		           value="<?php  (isset($_GET['uname']))?$_GET['uname']:"" ?>">
+                </div>
 
-		  <div class="mb-3">
-		    <label class="form-label" style="font-size:25px">Password</label>
-		    <input type="password" 
-		           class="form-control"
-		           name="pass">
-		  </div>
-		  
-		  <a href="forgot-password.php" class="link" style="font-size:20px;">Forgot Password?</a>
-		  <br>
-		  <button type="submit" class="btn btn-primary" style="font-size:25px; width:430px; position:relative; top:10px; left:15px;">Login</button>
-		  <h3 style="font-size:25px; position:relative; top: 50px; left:70px; color:darkslategrey;">Not a member yet? <a href="signup.php" class="link" style="font-size:25px;">Sign Up</a></h3>
-		  
-		</form>
+                <div class="mb-3">
+                    <label for="password" class="form-label" style="font-size: 20px;">Password</label>
+                    <input type="password" class="form-control" id="password" name="pass" >
+                </div>
+
+                <div class="mb-3">
+                    <a href="forgot-password.php" class="forgot-link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-custom mb-3">Login</button>
+
+                <div class="text-center mt-3 signup-link">
+                    Not a member yet? <a href="signup.php" class="link">Sign Up</a>
+                </div>
+            </form>
+        </div>
     </div>
-	<?php include"template/footer.php"; ?>
+
+    <?php include("template/footer.php"); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
